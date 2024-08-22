@@ -26,6 +26,7 @@ public class GameController {
             startView.printStartMessage();
 
             HintView hintView = new HintView();
+
             EndView endView = new EndView();
 
             ValidatorService validatorService = new ValidatorService();

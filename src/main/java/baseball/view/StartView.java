@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.constant.ViewEnum;
+
 public class StartView {
 
     public StartView() {
@@ -7,11 +9,11 @@ public class StartView {
     }
 
     public void printStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(ViewEnum.START.getMessage());
     }
 
     public void printEnterNumberMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(ViewEnum.ENTER_NUMBER.getMessage());
     }
 
 }

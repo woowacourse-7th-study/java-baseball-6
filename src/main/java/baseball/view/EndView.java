@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.constant.ViewEnum;
+
 public class EndView {
 
     public EndView() {
@@ -7,11 +9,11 @@ public class EndView {
     }
 
     public void printEndMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(ViewEnum.END.getMessage());
     }
 
     public void printReplayMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(ViewEnum.ENTER_REPLAY.getMessage());
     }
 
 }
