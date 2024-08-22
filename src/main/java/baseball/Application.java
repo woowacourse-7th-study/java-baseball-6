@@ -57,6 +57,11 @@ public class Application {
                 System.out.println("낫싱");
             }
 
+            if (strike == 3 && ball == 0) {
+                System.out.println();
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+
         }
 
     }
