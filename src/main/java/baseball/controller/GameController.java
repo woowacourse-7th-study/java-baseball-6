@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.service.ValidatorService;
 import baseball.view.EndView;
 import baseball.view.HintView;
 import baseball.view.StartView;
@@ -29,13 +30,13 @@ public class GameController {
             HintView hintView = new HintView();
             EndView endView = new EndView();
 
+            ValidatorService validatorService = new ValidatorService();
+
             while (flag == -1) {
                 startView.printEnterNumberMessage();
                 String userInput = Console.readLine();
 
-                if (userInput.length() != 3) {
-                    throw new IllegalArgumentException("3자리 정수를 입력해주세요.");
-                }
+                validatorService.checkUserInput(userInput);
 
                 List<Integer> prediction = new ArrayList<>(3);
                 for (int i = 0; i < 3; i++) {
