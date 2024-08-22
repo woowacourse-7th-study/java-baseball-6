@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.constant.ExceptionEnum;
+import baseball.constant.IndexEnum;
 
 public class ValidatorService {
 
@@ -9,7 +10,7 @@ public class ValidatorService {
     }
 
     public void checkUserInput(String userInput) {
-        if (userInput.length() != 3) {
+        if (userInput.length() != IndexEnum.MAX.getValue()) {
             throw new IllegalArgumentException(ExceptionEnum.THREE.getMessage());
         }
     }

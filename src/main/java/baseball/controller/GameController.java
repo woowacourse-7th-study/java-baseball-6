@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.IndexEnum;
 import baseball.model.Computer;
 import baseball.service.CountService;
 import baseball.service.ValidatorService;
@@ -39,8 +40,8 @@ public class GameController {
 
                 validatorService.checkUserInput(userInput);
 
-                int[] prediction = new int[3];
-                for (int i = 0; i < 3; i++) {
+                int[] prediction = new int[IndexEnum.MAX.getValue()];
+                for (int i = 0; i < IndexEnum.MAX.getValue(); i++) {
                     prediction[i] = userInput.charAt(i) - '0';
                 }
 
@@ -59,7 +60,7 @@ public class GameController {
                     hintView.printNothingMessage();
                 }
 
-                if (strike == 3 && ball == 0) {
+                if (strike == IndexEnum.MAX.getValue() && ball == 0) {
                     System.out.println();
                     endView.printEndMessage();
                     flag = 1;
