@@ -1,6 +1,9 @@
 package baseball;
 
 import baseball.model.Computer;
+import baseball.view.EndView;
+import baseball.view.HintView;
+import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -13,12 +16,18 @@ public class Application {
             int flag = -1;
             int replay = 0;
 
-            System.out.println("숫자 야구 게임을 시작합니다.");
+
             Computer computer = new Computer();
             computer.setRandomNumers();
 
+            StartView startView = new StartView();
+            startView.printStartMessage();
+
+            HintView hintView = new HintView();
+            EndView endView = new EndView();
+
             while (flag == -1) {
-                System.out.print("숫자를 입력해주세요 : ");
+                startView.printEnterNumberMessage();
                 String userInput = Console.readLine();
 
                 if (userInput.length() != 3) {
@@ -43,22 +52,22 @@ public class Application {
                 }
 
                 if (ball > 0) {
-                    System.out.print(ball + "볼 ");
+                    hintView.printBallMessage(ball);
                 }
 
                 if (strike > 0) {
-                    System.out.println(strike + "스트라이크");
+                    hintView.printStrikeMessage(strike);
                 }
 
                 if (ball == 0 && strike == 0) {
-                    System.out.println("낫싱");
+                    hintView.printNothingMessage();
                 }
 
                 if (strike == 3 && ball == 0) {
                     System.out.println();
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    endView.printEndMessage();
                     flag = 1;
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    endView.printReplayMessage();
                     replay = Integer.parseInt(Console.readLine());
                 }
 
