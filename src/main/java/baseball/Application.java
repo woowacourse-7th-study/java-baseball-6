@@ -22,7 +22,11 @@ public class Application {
             }
 
             System.out.print("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
+            String userInput = Console.readLine();
+
+            if (userInput.length() != 3) {
+                throw new IllegalArgumentException("3자리 정수를 입력해주세요.");
+            }
 
         }
 
