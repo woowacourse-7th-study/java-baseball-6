@@ -16,9 +16,10 @@ public class GameController {
     }
 
     public void startGame() {
+
         while (true) {
-            int flag = -1;
-            int replay = 0;
+
+            int replay = 1;
 
             Computer computer = new Computer();
             computer.setRandomNumers();
@@ -34,7 +35,8 @@ public class GameController {
 
             CountService countService = new CountService();
 
-            while (flag == -1) {
+            while (replay == 1) {
+
                 startView.printEnterNumberMessage();
                 String userInput = Console.readLine();
 
@@ -63,9 +65,9 @@ public class GameController {
                 if (strike == IndexEnum.MAX.getValue() && ball == 0) {
                     System.out.println();
                     endView.printEndMessage();
-                    flag = 1;
                     endView.printReplayMessage();
                     replay = Integer.parseInt(Console.readLine());
+                    break;
                 }
 
             }
