@@ -28,6 +28,35 @@ public class Application {
                 throw new IllegalArgumentException("3자리 정수를 입력해주세요.");
             }
 
+            List<Integer> prediction = new ArrayList<>(3);
+            for (int i=0; i<3; i++) {
+                prediction.add((int) userInput.charAt(i));
+            }
+
+            int strike = 0, ball = 0;
+            for (int i=0; i<3; i++) {
+                if (prediction.get(i).intValue() == computer.get(i).intValue()) {
+                    strike++;
+                }
+                for (int j=i+1; j<3; j++) {
+                    if (prediction.get(i).intValue() == computer.get(j).intValue()) {
+                        ball++;
+                    }
+                }
+            }
+
+            if (ball != 0) {
+                System.out.print(ball + "볼 ");
+            }
+
+            if (strike != 0) {
+                System.out.print(strike + "스트라이크 ");
+            }
+
+            if (ball == 0 && strike == 0) {
+                System.out.println("낫싱");
+            }
+
         }
 
     }
