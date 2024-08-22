@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.RandomRangeEnum;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Computer {
         List<Integer> numberList = new ArrayList<>();
 
         while (numberList.size() < MAX_NUM) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(RandomRangeEnum.START.getValue(), RandomRangeEnum.END.getValue());
             if (!numberList.contains(randomNumber)) {
                 numberList.add(randomNumber);
             }
