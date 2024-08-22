@@ -23,12 +23,12 @@
 ## 🎯 0점 방지 !!!
 - [ ] Github 제출
 - [ ] 우테코 사이트 과제 제출
-- [ ] 요구사항에 적힌 출력값 형식 지키기
-- [ ] 기능 구현 후 모든 테스트 동작 확인
-- [ ] java -version 후 JDK 17 확인
-- [ ] ./gradlew clean test 후 Build Successful 확인
-- [ ] System.exit() 호출하지 않기
-- [ ] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않기
-- [ ] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현하기
-- [ ] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하기
-- [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용하기
+- [x] 요구사항에 적힌 출력값 형식 지키기
+- [x] 기능 구현 후 모든 테스트 동작 확인
+- [x] java -version 후 JDK 17 확인
+- [x] ./gradlew clean test 후 Build Successful 확인
+- [x] System.exit() 호출하지 않기
+- [x] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않기
+- [x] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현하기
+- [x] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하기
+- [x] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용하기
