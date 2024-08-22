@@ -1,14 +1,12 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.service.CountService;
 import baseball.service.ValidatorService;
 import baseball.view.EndView;
 import baseball.view.HintView;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameController {
 
@@ -32,28 +30,21 @@ public class GameController {
 
             ValidatorService validatorService = new ValidatorService();
 
+            CountService countService = new CountService();
+
             while (flag == -1) {
                 startView.printEnterNumberMessage();
                 String userInput = Console.readLine();
 
                 validatorService.checkUserInput(userInput);
 
-                List<Integer> prediction = new ArrayList<>(3);
+                int[] prediction = new int[3];
                 for (int i = 0; i < 3; i++) {
-                    prediction.add((int) userInput.charAt(i) - '0');
+                    prediction[i] = userInput.charAt(i) - '0';
                 }
 
-                int strike = 0, ball = 0;
-                for (int i = 0; i < 3; i++) {
-                    if (prediction.get(i) == computer.getNumbers()[i]) {
-                        strike++;
-                    }
-                    for (int j = 0; j < 3; j++) {
-                        if (prediction.get(i) == computer.getNumbers()[j] && i != j) {
-                            ball++;
-                        }
-                    }
-                }
+                int strike = countService.countStrike(prediction, computer.getNumbers());
+                int ball = countService.countBall(prediction, computer.getNumbers());
 
                 if (ball > 0) {
                     hintView.printBallMessage(ball);
@@ -82,6 +73,7 @@ public class GameController {
             }
 
         }
+
     }
 
 }
