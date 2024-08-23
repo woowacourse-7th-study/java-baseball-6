@@ -8,13 +8,10 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다."); // 게임 시작 메시지 출력
 
-        boolean play = true;
+        boolean play = true; // 재시작을 하는지 확인하는 변수
 
-        while(play){
+        while(play){ // game 시작
             playGame();
-            if(restartGame()){
-                play = true;
-            }
             if(!restartGame()){
                 play = false;
             }
