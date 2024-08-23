@@ -26,7 +26,7 @@ public class GameController {
     /**
      * 게임 시작 메서드
      */
-    public void startGame() {
+    public void start() {
 
         while (true) {
 
