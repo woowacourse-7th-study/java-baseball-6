@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    static boolean gameWon = false; // 게임 이겼는지 여부 확인하는 변수, 전역변수로 선언
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다."); // 게임 시작 메시지 출력
     }
@@ -85,6 +86,10 @@ public class Application {
             }
             System.out.println();
         }
+
+        if(strike == 3){
+            isWinGame(); // strike 3이 나오면 isWinGame() 메서드 호출
+        }
     }
     private static boolean contains(int[] array, int value) { // 배열에 특정 값이 있는지 확인하는 메서드
         for (int i : array) {
@@ -93,5 +98,9 @@ public class Application {
             }
         }
         return false;
+    }
+
+    private static void isWinGame(){ // game이 이겼으면 gameWon 변수 true로 변경
+        gameWon = true;
     }
 }
