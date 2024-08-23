@@ -8,7 +8,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다."); // 게임 시작 메시지 출력
     }
 
-    public static int[] generateComputerNumbers() { // computer의 랜덤한 숫자를 저장하는 메서드
+    private static int[] generateComputerNumbers() { // computer의 랜덤한 숫자를 저장하는 메서드
         int[] com = new int[3];
 
         // 1~9까지 랜덤한 숫자 배열에 집어넣기
@@ -17,7 +17,7 @@ public class Application {
         }
         return com;
     }
-    public static int[] inputUserNumbers() { // user의 숫자를 입력 받는 메서드
+    private static int[] inputUserNumbers() { // user의 숫자를 입력 받는 메서드
         int[] user = new int[3];
 
         try {
@@ -60,5 +60,38 @@ public class Application {
                 throw new IllegalArgumentException("각 숫자는 1에서 9 사이여야 합니다.");
             }
         }
+    }
+
+    private static void compareNumber(int[] com, int[] user){ // 숫자를 비교하는 메서드
+        int strike = 0; // 스트라이크 개수
+        int ball = 0; // 볼 개수
+
+        for(int i=0; i<3; i++){
+            if(com[i] == user[i]){
+                strike ++;
+            }else if(contains(com, user[i])){
+                ball++;
+            }
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ball != 0) {
+                System.out.print(ball + "볼 ");
+            }
+            if (strike != 0) {
+                System.out.print(strike + "스트라이크");
+            }
+            System.out.println();
+        }
+    }
+    private static boolean contains(int[] array, int value) { // 배열에 특정 값이 있는지 확인하는 메서드
+        for (int i : array) {
+            if (i == value) {
+                return true;
+            }
+        }
+        return false;
     }
 }
