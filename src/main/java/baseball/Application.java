@@ -32,9 +32,15 @@ public class Application {
         int[] com = new int[3];
 
         // 1~9까지 랜덤한 숫자 배열에 집어넣기
+        // 중복된 숫자 문제 해결
         for (int i = 0; i < 3; i++) {
-            com[i] = Randoms.pickNumberInRange(1, 9);
+            int randomNum;
+            do {
+                randomNum = Randoms.pickNumberInRange(1, 9);
+            } while (contains(com, randomNum));
+            com[i] = randomNum;
         }
+
         return com;
     }
     private static int[] inputUserNumbers() { // user의 숫자를 입력 받는 메서드
@@ -79,6 +85,11 @@ public class Application {
             if (digit < 1 || digit > 9) {
                 throw new IllegalArgumentException("각 숫자는 1에서 9 사이여야 합니다.");
             }
+        }
+        
+        // 추가: 중복된 숫자가 있는지 확인
+        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
+            throw new IllegalArgumentException("입력값은 중복되지 않은 숫자여야 합니다.");
         }
     }
 
