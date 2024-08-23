@@ -7,6 +7,21 @@ public class Application {
     static boolean gameWon = false; // 게임 이겼는지 여부 확인하는 변수, 전역변수로 선언
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다."); // 게임 시작 메시지 출력
+
+        boolean play = true;
+
+        while(play){
+            playGame();
+        }
+    }
+
+    private static void playGame(){
+        int[] computerNumbers = generateComputerNumbers(); // 컴퓨터의 랜덤 숫자 생성
+
+        while(!gameWon){
+            int[] userNumbers = inputUserNumbers(); // 유저의 숫자 입력
+            compareNumber(computerNumbers, userNumbers); // 컴퓨터의 숫자와 유저의 숫자 비교 후 출력
+        }
     }
 
     private static int[] generateComputerNumbers() { // computer의 랜덤한 숫자를 저장하는 메서드
