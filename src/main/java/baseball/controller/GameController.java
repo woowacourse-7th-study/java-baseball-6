@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.constant.GameEnum;
 import baseball.constant.IndexEnum;
 import baseball.model.Computer;
+import baseball.model.User;
 import baseball.service.CountService;
 import baseball.service.ValidatorService;
 import baseball.view.EndView;
@@ -20,7 +21,7 @@ public class GameController {
 
         while (true) {
 
-            int replay = GameEnum.RESTART.getValue();
+            User user = new User();
 
             Computer computer = new Computer();
             computer.setRandomNumers();
@@ -36,7 +37,7 @@ public class GameController {
 
             CountService countService = new CountService();
 
-            while (replay == GameEnum.RESTART.getValue()) {
+            while (user.getReplay() == GameEnum.RESTART.getValue()) {
 
                 startView.printEnterNumberMessage();
                 String userInput = Console.readLine();
@@ -67,13 +68,13 @@ public class GameController {
                     System.out.println();
                     endView.printEndMessage();
                     endView.printReplayMessage();
-                    replay = Integer.parseInt(Console.readLine());
+                    user.setReplay(Integer.parseInt(Console.readLine()));
                     break;
                 }
 
             }
 
-            if (replay == GameEnum.END.getValue()) {
+            if (user.getReplay() == GameEnum.END.getValue()) {
                 break;
             }
 
