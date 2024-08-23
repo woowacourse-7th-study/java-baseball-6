@@ -11,12 +11,21 @@ import baseball.view.HintView;
 import baseball.view.StartView;
 import camp.nextstep.edu.missionutils.Console;
 
+/**
+ * 게임의 시작과 종료를 관리하는 Controller 클래스
+ */
 public class GameController {
 
+    /**
+     * GameController 기본 생성자
+     */
     public GameController() {
 
     }
 
+    /**
+     * 게임 시작 메서드
+     */
     public void startGame() {
 
         while (true) {

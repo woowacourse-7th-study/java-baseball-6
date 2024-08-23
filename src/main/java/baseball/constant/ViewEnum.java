@@ -1,5 +1,8 @@
 package baseball.constant;
 
+/**
+ * View에서 출력 되는 문장을 모아둔 Enum 클래스
+ */
 public enum ViewEnum {
 
     START("숫자 야구 게임을 시작합니다."),
@@ -10,13 +13,24 @@ public enum ViewEnum {
     END("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     ENTER_REPLAY("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
+
     final String message;
 
+    /**
+     * message 멤버 변수에 대한 getter 메서드
+     *
+     * @return
+     */
     public String getMessage() {
         return message;
     }
 
-    private ViewEnum(String message) {
+    /**
+     * ViewEnum 생성자
+     *
+     * @param message
+     */
+    ViewEnum(String message) {
         this.message = message;
     }
 
