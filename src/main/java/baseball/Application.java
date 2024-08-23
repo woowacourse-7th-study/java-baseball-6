@@ -12,6 +12,12 @@ public class Application {
 
         while(play){
             playGame();
+            if(restartGame()){
+                play = true;
+            }
+            if(!restartGame()){
+                play = false;
+            }
         }
     }
 
@@ -118,5 +124,14 @@ public class Application {
     private static void isWinGame(){ // game이 이겼으면 gameWon 변수 true로 변경
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         gameWon = true;
+    }
+
+    private static boolean restartGame(){ // game 재시작 여부를 확인하는 메서드
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+
+        if(input.equals("1")) return true;
+        if(input.equals("2")) return false;
+        return false;
     }
 }
