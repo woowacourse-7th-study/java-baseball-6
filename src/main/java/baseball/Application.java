@@ -46,25 +46,20 @@ public class Application {
     private static int[] inputUserNumbers() { // user의 숫자를 입력 받는 메서드
         int[] user = new int[3];
 
-        try {
-            System.out.print("숫자를 입력해주세요: ");
-            String input = Console.readLine(); // 사용자의 입력을 받음
+        System.out.print("숫자를 입력해주세요: ");
+        String input = Console.readLine(); // 사용자의 입력을 받음
 
-            // 입력 유효성 검사
-            validateInput(input);
+        // 입력 유효성 검사
+        validateInput(input);
 
-            // 입력값을 배열에 넣기
-            for (int i = 0; i < 3; i++) {
-                user[i] = Character.getNumericValue(input.charAt(i));
-            }
-
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.exit(1); // 예외 발생 시 애플리케이션 종료
+        // 입력값을 배열에 넣기
+        for (int i = 0; i < 3; i++) {
+            user[i] = Character.getNumericValue(input.charAt(i));
         }
 
         return user;
     }
+
 
     private static void validateInput(String input) { // 입력 유효성 검사를 수행하는 메서드
         // 길이가 3이 아닌 경우
