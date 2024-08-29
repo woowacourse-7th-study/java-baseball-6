@@ -16,11 +16,25 @@ import camp.nextstep.edu.missionutils.Console;
  */
 public class GameController {
 
-    /**
-     * GameController 기본 생성자
-     */
-    public GameController() {
+    private final Computer computer;
+    private final User user;
+    private final CountService countService;
+    private final ValidatorService validatorService;
+    private final StartView startView;
+    private final HintView hintView;
+    private final EndView endView;
 
+    /**
+     * GameController 생성자
+     */
+    public GameController(Computer computer, User user, CountService countService, ValidatorService validatorService, StartView startView, HintView hintView, EndView endView) {
+        this.computer = computer;
+        this.user = user;
+        this.countService = countService;
+        this.validatorService = validatorService;
+        this.startView = startView;
+        this.hintView = hintView;
+        this.endView = endView;
     }
 
     /**
@@ -29,22 +43,9 @@ public class GameController {
     public void start() {
 
         while (true) {
-
-            User user = new User();
-
-            Computer computer = new Computer();
             computer.setRandomNumers();
 
-            StartView startView = new StartView();
             startView.printStartMessage();
-
-            HintView hintView = new HintView();
-
-            EndView endView = new EndView();
-
-            ValidatorService validatorService = new ValidatorService();
-
-            CountService countService = new CountService();
 
             while (user.getReplay() == GameEnum.RESTART.getValue()) {
 
@@ -54,9 +55,8 @@ public class GameController {
                 validatorService.checkUserInput(userInput);
 
                 int[] prediction = new int[IndexEnum.MAX.getValue()];
-                for (int i = 0; i < IndexEnum.MAX.getValue(); i++) {
-                    prediction[i] = userInput.charAt(i) - '0';
-                }
+
+                changeToInt(userInput, prediction);
 
                 int strike = countService.countStrike(prediction, computer.getNumbers());
                 int ball = countService.countBall(prediction, computer.getNumbers());
@@ -89,6 +89,12 @@ public class GameController {
 
         }
 
+    }
+
+    private void changeToInt(String userInput, int[] prediction) {
+        for (int i = 0; i < IndexEnum.MAX.getValue(); i++) {
+            prediction[i] = userInput.charAt(i) - '0';
+        }
     }
 
 }
