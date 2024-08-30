@@ -1,17 +1,20 @@
 package baseball.view;
 
+import baseball.constants.GameConstants;
 import camp.nextstep.edu.missionutils.Console;
 import baseball.exception.InputValidator;
+import baseball.constants.MessageConstants;
+import baseball.constants.GameOption;
 
 public class InputView {
     public static int[] inputUserNumbers() { // user의 숫자를 입력 받는 메서드
-        System.out.print("숫자를 입력해주세요: ");
+        System.out.print(MessageConstants.INPUT_PROMPT_MESSAGE);
         String input = Console.readLine(); // 사용자의 입력을 받음
 
         InputValidator.validateInput(input); // 입력 유효성 검사
 
-        int[] userNumbers = new int[3];
-        for (int i = 0; i < 3; i++) {
+        int[] userNumbers = new int[GameConstants.NUMBER_LENGTH];
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             userNumbers[i] = Character.getNumericValue(input.charAt(i)); // 입력값을 배열에 넣기
         }
 
@@ -19,12 +22,14 @@ public class InputView {
     }
 
     public static boolean restartGame() { // game 재시작 여부를 확인하는 메서드
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(MessageConstants.RESTART_PROMPT_MESSAGE);
         String input = Console.readLine();
 
-        if (input.equals("1")) return true;
-        if (input.equals("2")) return false;
-
-        throw new IllegalArgumentException("잘못된 입력입니다. 게임을 종료합니다.");
+        try {
+            GameOption option = GameOption.from(Integer.parseInt(input));
+            return option == GameOption.RESTART;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(MessageConstants.INVALID_INPUT_MESSAGE);
+        }
     }
 }
